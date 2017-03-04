@@ -1,0 +1,36 @@
+#!/bin/sh
+
+result=`pgrep socat`
+
+if [ $? = 0 ]; then
+    echo "\033[0;31m[!] Killed socat(PID=$result)\033[0;39m"
+    kill -9 $result
+fi
+
+if [ $# -lt 1 ]; then
+    echo "Usage: `basename $0` target.bin [-p PORT] [-s(trace)] [-l(trace)]" 1>&2
+    exit 1
+fi
+
+PORT=8888
+CMD="./$1"
+shift 1
+
+while getopts hlsp: OPT
+do
+    case $OPT in
+	"p" ) PORT="$OPTARG" ;;
+	"l" ) CMD="ltrace -ff '$CMD'" ;;
+	"s" ) CMD="strace -ff '$CMD'" ;;
+    esac
+done
+
+echo "\033[0;32m[*] Target: $CMD\033[0;39m"
+echo "\033[0;32m[*] Listening on: $PORT\033[0;39m"
+socat tcp-l:$PORT,reuseaddr,fork exec:"$CMD",pty,raw,echo=0
+
+
+
+
+	    
+	    
