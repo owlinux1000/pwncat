@@ -12,7 +12,10 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
-# TODO: $1のファイルが無かった時の処理
+if ! test -e $1 ; then
+    echo "\033[0;31m[!] Not found $1\033[0;39m"
+    exit 1
+fi
 
 PORT=8888
 CMD="./$1"
