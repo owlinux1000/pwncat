@@ -12,9 +12,12 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
+# TODO: $1のファイルが無かった時の処理
+
 PORT=8888
 CMD="./$1"
 shift 1
+
 
 while getopts hlsp: OPT
 do
@@ -22,6 +25,7 @@ do
 	"p" ) PORT="$OPTARG" ;;
 	"l" ) CMD="ltrace -ff '$CMD'" ;;
 	"s" ) CMD="strace -ff '$CMD'" ;;
+	*) echo "Usage: `basename $0` target.bin [-p PORT] [-s(trace)] [-l(trace)]" 1>&2 ; exit 1
     esac
 done
 
