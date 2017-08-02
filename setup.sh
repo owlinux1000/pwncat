@@ -7,5 +7,4 @@ if [ $? != 0 ]; then
     sudo apt-get install socat
 fi
 
-chmod u+x pwncat
 sudo ln -fs $(pwd)/pwncat /usr/local/bin/pwncat
