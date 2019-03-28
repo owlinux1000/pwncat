@@ -12,7 +12,6 @@ Usage: pwncat target.bin [-p PORT] [-s(trace)] [-l(trace)]
 ## Install
 
 ```shell
-$ git clone https://github.com/owlinux1000/pwncat
-$ cd pwncat/
-# ./setup.sh
+$ wget https://raw.githubusercontent.com/owlinux1000/pwncat/master/pwncat -O /usr/local/bin/pwncat
+$ chmod +x /usr/local/bin/pwncat
 ```
