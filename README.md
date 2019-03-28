@@ -12,7 +12,7 @@ Usage: pwncat target.bin [-p PORT] [-s(trace)] [-l(trace)]
 ## Install
 
 ```shell
-# git clone https://bitbucket.org/encry1024/pwncat
-# cd pwncat/
+$ git clone https://github.com/owlinux1000/pwncat
+$ cd pwncat/
 # ./setup.sh
 ```
