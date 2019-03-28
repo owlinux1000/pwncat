@@ -7,4 +7,4 @@ if [ $? != 0 ]; then
     apt-get install socat
 fi
 
-ln -fs $(pwd)/pwncat /usr/local/bin/pwncat
+cp $(pwd)/pwncat /usr/local/bin/pwncat
